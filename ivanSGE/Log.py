@@ -2,12 +2,12 @@ from datetime import datetime
 import os
 
 class Log:
-    carpeta_logs = "logs"
+    carpeta_logs = "log"
 
     @staticmethod
     def get_archivo_log():
         ahora = datetime.now().strftime("%Y-%m-%d")
-        file_name = f"{ahora}-call.log"
+        file_name = f"{ahora}-airEuropa.log"
         file_path = os.path.join(Log.carpeta_logs, file_name)
 
         # Crear carpeta si no existe

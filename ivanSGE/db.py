@@ -40,8 +40,12 @@ class PostgreSQLConnection:
                 else:
                     cursor.execute(query)
 
-                result = cursor.fetchall()
-                return result
+                # Si es una consulta SELECT, intenta recuperar resultados
+                if query.strip().upper().startswith("SELECT"):
+                    return cursor.fetchall()
+
+                # Si no es SELECT, confirma los cambios
+                self.connection.commit()
         except Exception as e:
             print(f"Error al ejecutar la consulta: {e}")
             return None
